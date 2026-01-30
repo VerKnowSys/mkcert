@@ -53,7 +53,9 @@ impl Config {
 }
 
 pub fn get_config_path() -> Result<PathBuf, Error> {
-    let config_path = dirs::home_dir().ok_or(Error::NoHomeDir)?.join("mkcert-rs");
+    let config_path = dirs::home_dir()
+        .ok_or(Error::NoHomeDir)?
+        .join(".config/mkcert");
     std::fs::create_dir_all(&config_path).ok();
     Ok(config_path)
 }
